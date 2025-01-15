@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "module": "commonjs", // Node.js için uygun modül türü
+    "moduleResolution": "node",
+    "target": "es6", // Hedef ES standardını belirler (ES2021 de olabilir)
+    "checkJs": true,
+    "allowJs": true,
+    "jsx": "react" // React için JSX desteği ekler
+  },
+  "exclude": ["node_modules"]
+}

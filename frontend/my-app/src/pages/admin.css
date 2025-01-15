@@ -1,0 +1,138 @@
+/* Genel sayfa stili */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+  }
+  
+  .admin-page {
+    padding: 20px;
+  }
+  
+  .admin-page header {
+    background-color: #4a90e2;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .admin-page header h1 {
+    margin: 0;
+    font-size: 28px;
+  }
+  
+  .admin-page main h2 {
+    font-size: 22px;
+    color: #4a90e2;
+    margin-bottom: 15px;
+  }
+  
+  /* Buton stili */
+  .navigate-button,
+  .view-button,
+  .delete-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .navigate-button {
+    background-color: #4a90e2;
+    color: white;
+    margin-bottom: 20px;
+  }
+  
+  .navigate-button:hover {
+    background-color: #357ab8;
+  }
+  
+  .view-button {
+    background-color: #27ae60;
+    color: white;
+  }
+  
+  .view-button:hover {
+    background-color: #1e8a4d;
+  }
+  
+  .delete-button {
+    background-color: #e74c3c;
+    color: white;
+    margin-left: 10px;
+  }
+  
+  .delete-button:hover {
+    background-color: #c0392b;
+  }
+  
+  /* Tablo stili */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border-radius: 8px;
+  }
+  
+  table th,
+  table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  table th {
+    background-color: #4a90e2;
+    color: white;
+  }
+  
+  table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Hata ve yüklenme durumu */
+  .error-text {
+    color: #e74c3c;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .loading {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #4a90e2;
+    margin-top: 20px;
+  }
+  
+  /* Mobil uyumluluk */
+  @media (max-width: 768px) {
+    .admin-page {
+      padding: 10px;
+    }
+  
+    table th,
+    table td {
+      padding: 8px 10px;
+    }
+  
+    .navigate-button,
+    .view-button,
+    .delete-button {
+      font-size: 12px;
+      padding: 8px 10px;
+    }
+  }
+  
