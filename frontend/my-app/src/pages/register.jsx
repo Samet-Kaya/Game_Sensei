@@ -10,27 +10,34 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append("username", username);
-    formData.append("email", email);
-    formData.append("password", password);
+    const userData = {
+      username,
+      email,
+      password,
+    };
 
     try {
-      // User tablosuna kayıt işlemi
-      const userResponse = await fetch("http://localhost:1337/api/auth/local/register", {
-        method: "POST",
-        body: formData,
-      });
+      // Kullanıcı kaydı için User tablosuna kayıt
+      const userResponse = await fetch(
+        "http://localhost:1337/api/auth/local/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userData),
+        }
+      );
 
-      const userData = await userResponse.json();
+      const userResponseData = await userResponse.json();
 
       if (userResponse.ok) {
-        // Kullanıcı başarıyla kaydedildiyse
+        // User tablosuna kayıt başarılıysa
         setMessage("Kayıt başarılı! Giriş yapabilirsiniz.");
         setTimeout(() => (window.location.href = "/login"), 2000);
       } else {
-        console.error("User kaydı sırasında hata oluştu:", userData);
-        setMessage(`Hata: ${userData.error.message}`);
+        console.error("User kaydı sırasında hata oluştu:", userResponseData);
+        setMessage(`Hata: ${userResponseData.error.message}`);
       }
     } catch (error) {
       console.error("Kayıt işlemi sırasında hata oluştu:", error);

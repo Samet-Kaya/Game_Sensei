@@ -32,7 +32,7 @@ const Menu = () => {
     const fetchGames = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:1337/api/games?populate=background_image"
+          "http://4.233.147.212:1337/api/games?populate=background_image"
         );
         setGames(response.data.data || []); // Gelen veriyi state'e atıyoruz
         setFilteredGames(response.data.data || []); // İlk başta tüm oyunları göster
@@ -123,7 +123,7 @@ const Menu = () => {
 
     try {
       // 1. Fotoğrafı Yükle
-      const uploadResponse = await axios.post("http://localhost:1337/api/upload", formData, {
+      const uploadResponse = await axios.post("http://4.233.147.212:1337/api/upload", formData, {
         headers: {
           Authorization: `Bearer ${jwtToken}`,
         },
@@ -131,13 +131,13 @@ const Menu = () => {
 
       if (uploadResponse.status === 200 || uploadResponse.status === 201) {
         const uploadedImage = uploadResponse.data[0];
-        const uploadedImageUrl = `http://localhost:1337${uploadedImage.url}`;
+        const uploadedImageUrl = `http://4.233.147.212:1337${uploadedImage.url}`;
 
         console.log("Yüklenen Fotoğraf URL'si:", uploadedImageUrl);
 
         // 2. User Tablosunu Güncelle
         const updatedUserResponse = await axios.put(
-          `http://localhost:1337/api/users/${user.id}`,
+          `http://4.233.147.212:1337/api/users/${user.id}`,
           { avatar: uploadedImageUrl }, // URL'yi kaydet
           {
             headers: {
@@ -274,7 +274,7 @@ const Menu = () => {
             {filteredGames.map((game) => {
               const attributes = game || {};
               const imageUrl = attributes.background_image?.formats?.large?.url
-                ? `http://localhost:1337${attributes.background_image.formats.large.url}`
+                ? `http://4.233.147.212:1337${attributes.background_image.formats.large.url}`
                 : "/assets/default-image.jpg"; // Varsayılan görsel
           
                 return (

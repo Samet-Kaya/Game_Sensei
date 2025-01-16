@@ -19,7 +19,7 @@ const AddComment = ({ gameName, user, onCommentAdded }) => {
       const jwtToken = localStorage.getItem("token");
 
       const response = await axios.post(
-        "http://localhost:1337/api/comments",
+        "http://4.233.147.212:1337/api/comments",
         {
           data: {
             content: comment,
@@ -67,7 +67,7 @@ const Comments = ({ gameName, user }) => {
     const fetchComments = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:1337/api/comments?filters[game][name][$eq]=${gameName}&populate=users_permissions_user`
+          `http://4.233.147.212:1337/api/comments?filters[game][name][$eq]=${gameName}&populate=users_permissions_user`
         );
 
         // Gelen yanıtı düzenle ve eksik veriler için varsayılan değerler belirle
@@ -145,7 +145,7 @@ const GameList = () => {
     const fetchGames = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:1337/api/games?filters[name][$eq]=${name}&populate=background_image`
+          `http://4.233.147.212:1337/api/games?filters[name][$eq]=${name}&populate=background_image`
         );
         setGames(response.data.data); // Gelen veriyi state'e atıyoruz
         setLoading(false); // Yükleme tamamlandı
@@ -201,7 +201,7 @@ const GameList = () => {
     try {
       // 1. Fotoğrafı Yükle
       const uploadResponse = await axios.post(
-        "http://localhost:1337/api/upload",
+        "http://4.233.147.212:1337/api/upload",
         formData,
         {
           headers: {
@@ -212,13 +212,13 @@ const GameList = () => {
 
       if (uploadResponse.status === 200 || uploadResponse.status === 201) {
         const uploadedImage = uploadResponse.data[0];
-        const uploadedImageUrl = `http://localhost:1337${uploadedImage.url}`;
+        const uploadedImageUrl = `http://4.233.147.212:1337${uploadedImage.url}`;
 
         console.log("Yüklenen Fotoğraf URL'si:", uploadedImageUrl);
 
         // 2. User Tablosunu Güncelle
         const updatedUserResponse = await axios.put(
-          `http://localhost:1337/api/users/${user.id}`,
+          `http://4.233.147.212:1337/api/users/${user.id}`,
           { avatar: uploadedImageUrl }, // URL'yi kaydet
           {
             headers: {
@@ -319,7 +319,7 @@ const GameList = () => {
               {games.map((game) => {
                 const attributes = game || {};
                 const imageUrl = attributes.background_image?.formats?.large?.url
-                  ? `http://localhost:1337${attributes.background_image.formats.large.url}`
+                  ? `http://4.233.147.212:1337${attributes.background_image.formats.large.url}`
                   : "/assets/default-image.jpg";
 
                 return (

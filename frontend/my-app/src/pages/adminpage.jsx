@@ -49,7 +49,7 @@ const AdminPage = () => {
         // Kullanıcı verilerini getir
         const jwtToken = localStorage.getItem("token");
         const usersResponse = await axios.get(
-          "http://localhost:1337/api/users?populate=role",
+          "http://4.233.147.212:1337/api/users?populate=role",
           {
             headers: { Authorization: `Bearer ${jwtToken}` },
           }
@@ -58,7 +58,7 @@ const AdminPage = () => {
   
         // Oyun verilerini getir
         const gamesResponse = await axios.get(
-          "http://localhost:1337/api/games?populate=*",
+          "http://4.233.147.212:1337/api/games?populate=*",
           {
             headers: { Authorization: `Bearer ${jwtToken}` },
           }
@@ -81,7 +81,7 @@ const AdminPage = () => {
       try {
         const jwtToken = localStorage.getItem("token");
         const rolesResponse = await axios.get(
-          "http://localhost:1337/api/users-permissions/roles",
+          "http://4.233.147.212:1337/api/users-permissions/roles",
           {
             headers: { Authorization: `Bearer ${jwtToken}` },
           }
@@ -95,7 +95,7 @@ const AdminPage = () => {
     const fetchCurrentUser = async () => {
       try {
         const jwtToken = localStorage.getItem("token");
-        const userResponse = await axios.get("http://localhost:1337/api/users/me", {
+        const userResponse = await axios.get("http://4.233.147.212:1337/api/users/me", {
           headers: { Authorization: `Bearer ${jwtToken}` },
         });
         setCurrentUser(userResponse.data);
@@ -125,7 +125,7 @@ const AdminPage = () => {
     const jwtToken = localStorage.getItem("token");
     try {
       await axios.post(
-        "http://localhost:1337/api/users",
+        "http://4.233.147.212:1337/api/users",
         {
           username: newUser.username,
           email: newUser.email,
@@ -139,7 +139,7 @@ const AdminPage = () => {
       alert("Kullanıcı başarıyla eklendi.");
       setNewUser({ username: "", email: "", password: "", role: "" });
       // Yeni kullanıcıları yeniden çek
-      const usersResponse = await axios.get("http://localhost:1337/api/users?populate=role", {
+      const usersResponse = await axios.get("http://4.233.147.212:1337/api/users?populate=role", {
         headers: { Authorization: `Bearer ${jwtToken}` },
       });
       setUsers(usersResponse.data);
@@ -162,7 +162,7 @@ const handleEditClick = (game) => {
     try {
       // PUT isteğini gönder
       await axios.put(
-        `http://localhost:1337/api/games/${selectedGame.id}`,
+        `http://4.233.147.212:1337/api/games/${selectedGame.id}`,
         {
           data: {
             name: selectedGame.name,
@@ -203,7 +203,7 @@ const handleEditClick = (game) => {
     try {
       const jwtToken = localStorage.getItem("token");
       // Kullanıcı silmek için DELETE isteği gönder
-      await axios.delete(`http://localhost:1337/api/users/${userId}`, {
+      await axios.delete(`http://4.233.147.212:1337/api/users/${userId}`, {
         headers: { Authorization: `Bearer ${jwtToken}` },
       });
   
@@ -231,7 +231,7 @@ const handleEditClick = (game) => {
     try {
       const jwtToken = localStorage.getItem("token");
       await axios.put(
-        `http://localhost:1337/api/users/${editingUser.id}`,
+        `http://4.233.147.212:1337/api/users/${editingUser.id}`,
         {
           username: editedUser.username,
           email: editedUser.email,
@@ -267,7 +267,7 @@ const handleEditClick = (game) => {
       const jwtToken = localStorage.getItem("token");
   
       // DELETE isteğini gönder
-      await axios.delete(`http://localhost:1337/api/games/${gameId}`, {
+      await axios.delete(`http://4.233.147.212:1337/api/games/${gameId}`, {
         headers: { Authorization: `Bearer ${jwtToken}` },
       });
   
@@ -294,7 +294,7 @@ const handleEditClick = (game) => {
       let imageId = null;
       if (gameImage) {
         const uploadResponse = await axios.post(
-          "http://localhost:1337/api/upload",
+          "http://4.233.147.212:1337/api/upload",
           formData,
           {
             headers: {
@@ -311,7 +311,7 @@ const handleEditClick = (game) => {
   
       // 2. Oyun verilerini ekle
       const response = await axios.post(
-        "http://localhost:1337/api/games",
+        "http://4.233.147.212:1337/api/games",
         {
           data: {
             name: gameName,

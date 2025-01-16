@@ -10,7 +10,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        `http://localhost:1337/api/auth/local`,
+        `http://4.233.147.212:1337/api/auth/local`,
         {
           method: "POST",
           headers: {
@@ -27,7 +27,7 @@ const Login = () => {
 
         // Kullanıcı bilgilerini tekrar almak ve populate ile rolü getirmek
         const userResponse = await fetch(
-          `http://localhost:1337/api/users/${data.user.id}?populate=role`,
+          `http://4.233.147.212:1337/api/users/${data.user.id}?populate=role`,
           {
             headers: {
               Authorization: `Bearer ${jwtToken}`,
